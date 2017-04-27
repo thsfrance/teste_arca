@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'empresa','middleware' => 'auth'],function(){
+    Route::get('cadastro','EmpresaController@cadastro');
+    Route::post('salvar','EmpresaController@salvar');
 });
+
+Route::get('empresa/detalhes/{codigo}','EmpresaController@detalhes');
