@@ -11,6 +11,6 @@ class Categoria extends Model
     public $timestamps = false;
     
     public function empresas(){
-        return $this->hasMany('App\Empresa');
+        return $this->belongsToMany('App\Categoria','categoria_empresa','empresa_id','categoria_id');
     }
 }

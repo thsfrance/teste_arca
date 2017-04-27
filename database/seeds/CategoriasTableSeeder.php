@@ -13,7 +13,6 @@ class CategoriasTableSeeder extends Seeder
      */
     public function run()
     {
-        Categoria::truncate();
         
         $categorias = [
             ['descricao' => 'Auto'],

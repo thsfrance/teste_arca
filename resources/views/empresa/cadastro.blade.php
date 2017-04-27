@@ -1,6 +1,7 @@
 @extends('layouts.principal')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-lg-10">
@@ -19,7 +20,7 @@
                             @endif
                         </div>
                          <div class="form-group col-lg-12 {{ $errors->has('endereco') ? ' has-error' : '' }}">
-                            <label for="endereco">Endereço</label>
+                            <label for="endereco">EndereÃ§o</label>
                             <input type="text" class="form-control" id="endereco" name="endereco" maxlength="190" value="{{ old('endereco') }}" required>
                             @if ($errors->has('endereco'))
                                 <span class="help-block">
@@ -64,7 +65,7 @@
                             @endif
                         </div>
                         <div class="form-group col-lg-12 {{ $errors->has('descricao') ? ' has-error' : '' }}">
-                            <label for="descricao">Descrição</label>
+                            <label for="descricao">DescriÃ§Ã£o</label>
                             <input type="text" class="form-control" id="descricao" name="descricao" maxlength="190" value="{{ old('descricao') }}" required>
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -72,16 +73,16 @@
                                 </span>
                             @endif
                         </div>
-                         <div class="form-group col-md-8 {{ $errors->has('categoria') ? ' has-error' : '' }}">
-                            <label for="categoria">Categoria</label>
-                            <select class="form-control" id="categoria" name="categoria_id">
+                         <div class="form-group col-md-8 {{ $errors->has('categorias') ? ' has-error' : '' }}">
+                            <label for="categoria">Categorias</label>
+                            <select class="form-control" id="categoria" name="categorias[]" multiple="multiple">
                                 @foreach($categorias as $categoria)
                                 <option value="{{$categoria->id}}">{{$categoria->descricao}}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('categoria'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('categoria_id') }}</strong>
+                                    <strong>{{ $errors->first('categorias') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -94,7 +95,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 

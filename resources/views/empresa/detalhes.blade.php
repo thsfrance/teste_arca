@@ -12,12 +12,14 @@
                 </div>
                 <ul class='list-group'>
                     <li class="list-group-item"><strong>Telefone: {{$empresa->telefone}}</strong></li>
-                    <li class="list-group-item"><strong>EndereÁo: {{$empresa->endereco}}</strong></li>
-                    <li class="list-group-item"><strong>Cep: {{$empresa->cep}}</strong></li>
-                    <li class="list-group-item"><strong>Cidade: {{$empresa->cidade}}</strong></li>
-                    <li class="list-group-item"><strong>Estado: {{$empresa->estado}}</strong></li>
-                    <li class="list-group-item"><strong>DescriÁ„o: {{$empresa->descricao}}</strong></li>
-                    <li class="list-group-item"><strong>Categoria: {{$categoria->descricao}}</strong></li>
+                    <li class="list-group-item"><strong>Endere√ßo: </strong>{{$empresa->endereco}}, {{$empresa->cidade}} - {{$empresa->estado}}, {{$empresa->cep}}</li>
+                    <li class="list-group-item"><strong>Descri√ß√£o: </strong>{{$empresa->descricao}}</li>
+                    <li class="list-group-item">
+                        <strong>Categorias: </strong>
+                        @foreach($categorias as $categoria)
+                            {{$categoria->descricao}},
+                        @endforeach
+                    </li>
                 </ul>
             </div>
         </div>

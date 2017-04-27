@@ -11,6 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('css/bootstrap-multiselect.css')}}" type="text/css"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
@@ -86,5 +88,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}} "></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-multiselect.js')}} "></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#categoria').multiselect();
+    });
+</script>
 </body>
 </html>

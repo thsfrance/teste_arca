@@ -31,7 +31,7 @@ class EmpresaCadastroRequest extends FormRequest
             'cidade'        => 'required|max:190',
             'estado'        => 'required|max:190',
             'descricao'     => 'required|max:190',
-            'categoria_id'  => 'required|numeric'
+            'categorias'    => 'required'
         ];
     }
     

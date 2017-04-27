@@ -17,9 +17,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::post('empresa/busca', 'EmpresaController@buscar');
+
+Route::get('empresa/detalhes/{codigo}','EmpresaController@detalhes');
+
 Route::group(['prefix' => 'empresa','middleware' => 'auth'],function(){
     Route::get('cadastro','EmpresaController@cadastro');
     Route::post('salvar','EmpresaController@salvar');
 });
-
-Route::get('empresa/detalhes/{codigo}','EmpresaController@detalhes');

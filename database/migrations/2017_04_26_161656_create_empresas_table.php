@@ -22,8 +22,6 @@ class CreateEmpresasTable extends Migration
             $table->string('cidade');
             $table->string('estado');
             $table->string('descricao');
-            $table->integer('categoria_id')->unsigned();
-            $table->foreign('categoria_id')->references('id')->on('users');
         });
     }
 

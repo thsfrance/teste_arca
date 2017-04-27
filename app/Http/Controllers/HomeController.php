@@ -23,10 +23,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
-        $empresas = Empresa::limit(5)->get();
-        
-        return view('home')->with('empresas',$empresas);
+    {   
+        return view('home');
     }
 }

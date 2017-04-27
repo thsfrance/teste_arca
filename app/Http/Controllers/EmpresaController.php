@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Categoria;
 use App\Empresa;
 use App\Http\Requests\EmpresaCadastroRequest;
+use App\Http\Requests\EmpresaBuscaRequest;
 
 class EmpresaController extends Controller
 {
@@ -32,10 +33,10 @@ class EmpresaController extends Controller
     
     public function salvar(EmpresaCadastroRequest $request){
         try{
-           $categoria = Categoria::find($request->input('categoria_id'));
-           $empresa = $categoria->empresas()->create($request->except(['_token','categoria_id']));
+           $empresa = Empresa::create($request->except(['_token','categorias']));
            if(!empty($empresa->id)){
-               return redirect('home')->with('success','Novo registro incluído com sucesso');
+               $empresa->categorias()->attach($request->input('categorias'));
+               return redirect('home')->with('success','Novo registro incluÃ­do com sucesso');
            } else {
                return redirect('home')->with('error','Houve um problema.');
            }
@@ -46,7 +47,16 @@ class EmpresaController extends Controller
     
     public function detalhes($codigo){
         $empresa = Empresa::find(base64_decode($codigo));
-        $categoria = Categoria::find($empresa->categoria_id);
-        return view('empresa.detalhes')->with('empresa',$empresa)->with('categoria',$categoria);
+        return view('empresa.detalhes')->with('empresa',$empresa)->with('categorias',$empresa->categorias);
+    }
+    
+    public function buscar(EmpresaBuscaRequest $request){
+        $search = $request->input('search');
+        $empresas = Empresa::where('endereco','like','%'.$search.'%')
+                                ->orWhere('cidade','like','%'.$search.'%')
+                                ->orWhere('estado','like','%'.$search.'%')
+                                ->orWhere('titulo','like','%'.$search.'%')->get();
+        
+        return redirect('home')->with('empresas',$empresas);
     }
 }
