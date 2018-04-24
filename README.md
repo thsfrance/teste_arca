@@ -11,7 +11,7 @@ composer install
 php artisan serve
 
 #O terminal exibirá a mensagem de confirmação
-Laravel development server started: <http://127.0.0.1:8000> 
+Laravel development server started: <http://127.0.0.1:8000>
 ```
 
 Acesse o projeto através da url http://localhost:8000
